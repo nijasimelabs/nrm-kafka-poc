@@ -17,6 +17,12 @@
         'ws://' + window.location.host +
         '/ws/chat/' + roomName + '/');
 
+  chatSocket.onopen = function(e) {
+    chatSocket.send(JSON.stringify({
+      'message': 'test',
+    }));
+  };
+
     chatSocket.onmessage = function(e) {
         var data = JSON.parse(e.data);
         var message = data['message'];
