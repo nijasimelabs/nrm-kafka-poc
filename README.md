@@ -1,4 +1,4 @@
-# Requirement
+# Requirements
 
 - kafka
 - redis
@@ -10,7 +10,7 @@
 - install requirements.txt
 - start django app
 - use command-line producer to feed 'netbot-topic' topic (hardcoded in Consumers.py)
-- visit /chat/<room_name> in browser
+- visit /chat/<room_name> in browser,
   text area should get updated with messages from 'netbot-topic'
 
 
