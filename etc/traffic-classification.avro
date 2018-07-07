@@ -1,0 +1,36 @@
+{
+  "namespace": "streams",
+  "name": "trafficclassification",
+  "type": "record",
+  "fields": [
+    {"name": "datetime", "type": {
+      "type": "long",
+      "format_as_time" : "unix_long",
+      "arg.properties": {
+        "iteration": { "start": 1, "step": 10}
+      }
+    }},
+    {"name": "link", "type": {
+      "type": "enum",
+      "symbols": ["Newtech_1", "Newtech_2"]
+    }},
+    {"name": "classname", "type": {
+      "type": "enum",
+      "symbols": ["ARP", "CREW_Web_Browsing", "PAX_Web_Browsing", "RIP"]
+    }},
+    {"name": "enable", "type": {
+      "type": "enum",
+      "symbols": ["0", "1"]
+    }},
+    {"name": "expression", "type": {
+      "type": "string"
+    }},
+    {"name": "classname", "type": {
+      "type": "enum",
+      "symbols": ["ARP", "CREW_Web_Browsing", "PAX_Web_Browsing", "RIP"]
+    }},
+    {"name": "matchingorder", "type": {
+      "type": "int"
+    }},
+  ]
+}

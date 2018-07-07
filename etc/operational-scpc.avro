@@ -1,0 +1,33 @@
+{
+  "namespace": "streams",
+  "name": "operationalscpc",
+  "type": "record",
+  "fields": [
+    {"name": "datetime", "type": {
+      "type": "long",
+      "format_as_time" : "unix_long",
+      "arg.properties": {
+        "iteration": { "start": 1, "step": 10}
+      }
+    }},
+    {"name": "link", "type": {
+      "type": "string",
+      "arg.properties": {
+        "regex": "Newtech_[1-2]"
+      }
+    }},
+    {"name": "modecod", "type": {
+      "type": "string"
+    }},
+    {"name": "efficiency", "type": {
+      "type": "float"
+    }},
+
+    {"name": "symbolrate", "type": {
+      "type": "long"
+    }},
+    {"name": "avilableIpRate", "type": {
+      "type": "long"
+    }},
+  ]
+}

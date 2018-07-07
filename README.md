@@ -1,5 +1,6 @@
 # Requirements
 
+- java 7 or 8
 - kafka
 - redis
 
@@ -13,11 +14,14 @@
 - visit /chat/<room_name> in browser,
   text area should get updated with messages from 'netbot-topic'
 
+# Where are we
+- We are bringing channel group profile api to kafka-ksql stack
+- test data for wanoperationaldb, operationalscpc, trafficshaping and trafficclassification is generated
+using
+ ksql-datagen schema=<schema.avro> format=delimited topic=<topicname> key=<keyfield>
+- avro schema files are available in etc/ dir (not tested yet)
 
 
 # TODO
-
-- use ksql, may need to use confluent platform
-- generate and feed two streams to kafka
-- use ksql to filter/aggregate/window/join streams and write to ksql table
-- query ksql tables and display results in django app
+- write ksql queries for generating channel group profile
+- query and display data in django

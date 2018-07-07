@@ -1,0 +1,49 @@
+{
+  "namespace": "streams",
+  "name": "trafficshaping",
+  "type": "record",
+  "fields": [
+    {"name": "datetime", "type": {
+      "type": "long",
+      "format_as_time" : "unix_long",
+      "arg.properties": {
+        "iteration": { "start": 1, "step": 10}
+      }
+    }},
+    {"name": "link", "type": {
+      "type": "enum",
+      "symbols": ["Newtech_1", "Newtech_2"]
+    }},
+    {"name": "nodename", "type": {
+      "type": "enum",
+      "symbols": ["ARP", "CREW_Web_Browsing", "PAX_Web_Browsing", "RIP"]
+    }},
+    {"name": "enable", "type": {
+      "type": "enum",
+      "symbols": ["0", "1"]
+    }},
+    {"name": "parentnode", "type": {
+      "type": "enum",
+      "symbols": ["0", "1"]
+    }},
+    {"name": "cir", "type": {
+      "type": "float"
+    }},
+    {"name": "mir", "type": {
+      "type": "float"
+    }},
+    {"name": "channel", "type": {
+      "type": "enum",
+      "symbols": ["channel1"]
+    }},
+    {"name": "ratepriority", "type": {
+      "type": "int"
+    }},
+    {"name": "maxqueuetime", "type": {
+      "type": "int"
+    }},
+    {"name": "shapingunit", "type": {
+      "type": "int"
+    }},
+  ]
+}
