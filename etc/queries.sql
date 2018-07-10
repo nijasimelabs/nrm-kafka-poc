@@ -1,21 +1,7 @@
--- operational-scpc stream
-DROP STREAM operationalscpc;
+-- traffic-classification table
+DROP TABLE trclass;
 
-CREATE STREAM operationalscpc 
-  (datetime BIGINT, 
-   link VARCHAR, 
-   modecod VARCHAR, 
-   efficiency VARCHAR, 
-   symbolrate VARCHAR, 
-   availableiprate VARCHAR) 
-  WITH (KAFKA_TOPIC='operationalscpc', 
-        VALUE_FORMAT='DELIMITED', 
-		TIMESTAMP='datetime', 
-		KEY='link');
-
--- traffic-classification stream
-DROP STREAM trafficclassification;
-CREATE STREAM trafficclassification 
+CREATE TABLE trclass 
   (datetime BIGINT, 
    link VARCHAR, 
    classname VARCHAR, 
@@ -29,9 +15,9 @@ CREATE STREAM trafficclassification
 		KEY='link');
 		
 		
--- traffic-shaping stream
-DROP STREAM trafficshaping;
-CREATE STREAM trafficshaping 
+-- traffic-shaping table
+DROP TABLE trshaping;
+CREATE TABLE trshaping 
   (datetime BIGINT, 
    link VARCHAR, 
    nodename VARCHAR, 
@@ -47,18 +33,3 @@ CREATE STREAM trafficshaping
         VALUE_FORMAT='DELIMITED', 
 		KEY='link', 
 		TIMESTAMP='datetime');
-
--- wanoperationaldb stream
-DROP STREAM wanoperationaldb;
-CREATE STREAM wanoperationaldb 
-  (seq INT, 
-   flag VARCHAR, 
-   datetime BIGINT, 
-   wanlinks VARCHAR, 
-   dscpValues VARCHAR, 
-   potentialmatrix VARCHAR) 
-  WITH (KAFKA_TOPIC='wanoperationaldb', 
-        VALUE_FORMAT='DELIMITED', 
-		TIMESTAMP='datetime');
-		
-		
