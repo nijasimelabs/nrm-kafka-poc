@@ -1,5 +1,4 @@
 -- traffic-classification table
-DROP TABLE trclass;
 
 CREATE TABLE trclass 
   (datetime BIGINT, 
@@ -16,8 +15,7 @@ CREATE TABLE trclass
 		
 		
 -- traffic-shaping table
-DROP TABLE trshaping;
-CREATE TABLE trshaping 
+CREATE STREAM trshaping 
   (datetime BIGINT, 
    link VARCHAR, 
    nodename VARCHAR, 
@@ -33,3 +31,35 @@ CREATE TABLE trshaping
         VALUE_FORMAT='DELIMITED', 
 		KEY='link', 
 		TIMESTAMP='datetime');
+		
+		
+-- result table
+
+CREATE STREAM trconfigstream 
+WITH (VALUE_FORMAT='DELIMITED', 
+	  TIMESTAMP='datetime') 
+AS SELECT 
+	trshaping.datetime as datetime, 
+	trshaping.link as link, 
+	classname, 
+	trclass.enable as enable, 
+	expression, 
+	cir, 
+	mir 
+FROM trshaping LEFT JOIN trclass 
+ON trshaping.link = trclass.link 
+WHERE trshaping.nodename = trclass.nodename;
+
+
+CREATE TABLE trconfig
+WITH (VALUE_FORMAT='DELIMITED', 
+	  TIMESTAMP='datetime') 
+AS SELECT 
+	datetime, 
+	link, 
+	classname, 
+	enable, 
+	expression, 
+	cir, 
+	mir 
+FROM trconfigstream;
