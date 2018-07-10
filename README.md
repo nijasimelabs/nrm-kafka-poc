@@ -17,9 +17,8 @@
 # Where are we
 - We are bringing channel group profile api to kafka-ksql stack
 - test data for wanoperationaldb, operationalscpc, trafficshaping and trafficclassification is generated
-using
- ksql-datagen schema=<schema.avro> format=delimited topic=<topicname> key=<keyfield>
-- avro schema files are available in etc/ dir (not tested yet)
+using `bash data-gen.sh start` 
+- generators can be stopped using `bash data-gen.sh stop`
 
 
 # TODO
