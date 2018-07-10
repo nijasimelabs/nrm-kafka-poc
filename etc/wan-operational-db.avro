@@ -10,8 +10,10 @@
       }
     }},
     {"name": "flag", "type": {
-      "type": "enum",
-      "symbols": ["0", "1"]
+      "type": "string",
+        "arg.properties": {
+          "regex": "(0|1)"
+		}
     }},
     {"name": "datetime", "type": {
       "type": "long",
